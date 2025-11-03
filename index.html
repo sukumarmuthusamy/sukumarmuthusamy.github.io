@@ -1,10 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sukumar Muthusamy - Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sukumar Muthusamy · AI/ML Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#121317; --text:#e6e6e6; --muted:#a7a7a7;
+      --brand:#5ac8fa; --brand-2:#9b5cff; --accent:#20e3b2;
+      --maxw:1080px; --radius:16px; --shadow:0 8px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .bg-gradient{position:fixed;inset:0;z-index:-1;background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(90,200,250,.18), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(155,92,255,.15), transparent 60%),
+      radial-gradient(700px 400px at 50% 120%, rgba(32,227,178,.12), transparent 60%),
+      linear-gradient(180deg,#0b0c10 0%,#0a0a0d 100%);}
+    .nav{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(10,10,13,.45);border-bottom:1px solid rgba(255,255,255,.06);z-index:20}
+    .nav-inner{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .brand span{background:linear-gradient(90deg,var(--brand),var(--accent),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{color:var(--text);opacity:.85}
+    .menu a.active{color:white}
+    .menu .btn{padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#061018;font-weight:700}
+    section{max-width:var(--maxw);margin:0 auto;padding:80px 20px}
+    .kicker{font-size:.9rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+    .section-title{font-size:1.6rem;margin:0 0 22px;font-weight:800}
+    .muted{color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .title{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:14px 0 10px;font-weight:800}
+    .title span{-webkit-background-clip:text;background-clip:text;color:transparent;background-image:linear-gradient(90deg,var(--brand),var(--accent),var(--brand-2))}
+    .subtitle{font-size:1.1rem;color:var(--muted);max-width:65ch}
+    .btn{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#061018;border:none}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+    .stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-align:center}
+    .pill-group{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);font-size:.95rem}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px} .card p{margin:0 0 12px;color:var(--muted)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:.85rem;margin-right:6px}
+    .card .actions{display:flex;gap:10px;margin-top:10px}
+    .timeline{position:relative;margin-left:6px;padding-left:22px}
+    .timeline::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(var(--brand),var(--brand-2))}
+    .tl-item{margin-bottom:18px} .tl-item h4{margin:0} .tl-item .meta{color:var(--muted);font-size:.95rem}
+    .contact-card{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact-card .box{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+    .socials{display:flex;gap:12px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff}
+    footer{max-width:var(--maxw);margin:0 auto;padding:30px 20px;color:var(--muted);font-size:.95rem}
+    @media (max-width: 960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.contact-card{grid-template-columns:1fr}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}.nav-inner{flex-wrap:wrap;gap:8px}.menu{gap:12px;flex-wrap:wrap}}
+  </style>
 </head>
 <body>
-    <h1>Hello, I'm Sukumar Muthusamy</h1>
-    <p>Welcome to my AI/ML portfolio!</p>
+  <div class="bg-gradient"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Sukumar <span>Muthusamy</span></div>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <div class="kicker">AI · ML · Responsible AI</div>
+      <h1 class="title">Building dependable <span>AI systems</span> with clarity and care.</h1>
+      <p class="subtitle">
+        Graduate student in Artificial Intelligence (GPA 4.0). 8.5+ years in U.S. healthcare QA and automation.
+        I design models, explain decisions (SHAP), and ship practical tools with privacy in mind.
+      </p>
+      <div class="hero-cta" style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="https://github.com/sukumarmuthusamy" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/sukumarmuthusamy" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <!-- Replace with your PDF -->
+        <a class="btn" href="#" target="_blank" rel="noreferrer"><i class="fa-solid fa-file-lines"></i> Resume</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="kicker">Snapshot</div>
+      <ul style="margin:10px 0 0 18px;line-height:1.65">
+        <li>QA Tech Lead for 12 scrum teams</li>
+        <li>Privacy-aware predictive healthcare research</li>
+        <li>Explainable insurance claim classification (SHAP)</li>
+      </ul>
+      <div class="stat-grid">
+        <div class="stat"><b>8.5+ yrs</b><div class="muted">Automation</div></div>
+        <div class="stat"><b>4.0</b><div class="muted">MS AI GPA</div></div>
+        <div class="stat"><b>10+</b><div class="muted">Academic Projects</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="kicker">About</div>
+    <h2 class="section-title">Who I am</h2>
+    <p class="muted" style="max-width:70ch">
+      I’m Sukumar Muthusamy, an AI graduate student focused on reliable, interpretable models.
+      My healthcare QA background taught me to value robustness, verification, and human-readable explanations.
+      I enjoy turning complex pipelines into clean, auditable systems that people trust.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="kicker">Skills</div>
+    <h2 class="section-title">Tools I use to ship</h2>
+    <div class="pill-group">
+      <span class="pill">Python</span><span class="pill">NumPy</span><span class="pill">Pandas</span>
+      <span class="pill">scikit-learn</span><span class="pill">TensorFlow/Keras</span><span class="pill">Matplotlib</span>
+      <span class="pill">SHAP</span><span class="pill">SQL</span><span class="pill">BigQuery</span><span class="pill">Spark</span>
+      <span class="pill">AWS</span><span class="pill">GCP</span><span class="pill">Docker</span>
+      <span class="pill">Selenium</span><span class="pill">Postman</span><span class="pill">Bitbucket/Bamboo</span>
+      <span class="pill">Git/GitHub</span><span class="pill">JIRA/Confluence</span>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="kicker">Experience</div>
+    <h2 class="section-title">Where I’ve worked</h2>
+
+    <!-- GPA ROLE (added) -->
+    <article class="card" style="margin-bottom:18px">
+      <h3>Graduate Professional Assistant (GPA) — Kennesaw State University</h3>
+      <p class="muted">Aug 2025 – Present · Kennesaw, GA</p>
+      <ul style="margin:8px 0 0 18px;line-height:1.65">
+        <li>Building an AI assistant for <b>Faculty Learning Outcomes</b> alignment: maps course artifacts (syllabi, assignments, rubrics) to program outcomes using lightweight NLP and retrieval.</li>
+        <li>Designed privacy-first pipelines: on-prem data handling, PII scrubbing, and role-based access for faculty dashboards.</li>
+        <li>Delivered a prototype dashboard that surfaces coverage gaps, suggested assessments, and evidence snapshots for accreditation reviews.</li>
+        <li>Stack: Python, scikit-learn, simple embeddings/RAG, SQLite/BigQuery (pilot), Looker-style charts.</li>
+      </ul>
+    </article>
+
+    <article class="card" style="margin-bottom:18px">
+      <h3>Tech Lead QA — Carelon Global Solutions (Elevance Health)</h3>
+      <p class="muted">Sep 2020 – Dec 2024 · Hyderabad, India</p>
+      <ul style="margin:8px 0 0 18px;line-height:1.65">
+        <li>Directed QA across 12 scrum teams; standardized workflows and ensured 100% QA sign-off before releases.</li>
+        <li>Cut production defects by ~70% via root-cause analysis and process improvements; downsized prod-support from 18→6.</li>
+        <li>Led automation with Selenium, Python, Postman; 25–30% faster regressions using Bitbucket+Bamboo pipelines.</li>
+        <li>Conducted 30+ interviews; mentored 30+ engineers; acted as domain SME across units.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Senior Software Engineer — Accenture (Client: Elevance/Anthem)</h3>
+      <p class="muted">Aug 2016 – Sep 2020 · Chennai, India</p>
+      <ul style="margin:8px 0 0 18px;line-height:1.65">
+        <li>Owned QA for a 10-member scrum team, from sprint planning to production deployment.</li>
+        <li>Onboarded/mentored 40+ hires; reduced transition time by ~30% with domain sessions.</li>
+        <li>Managed savings tracker reporting and high-trust internal data operations for 60+ staff.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="kicker">Projects</div>
+    <h2 class="section-title">Selected work</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Insurance Claim Classifier (Explainable)</h3>
+        <p>AI claim classification with SHAP; auditor-level and user-friendly rationales to support trust and compliance.</p>
+        <div><span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">SHAP</span></div>
+        <div class="actions"><a href="#" target="_blank">Code</a><a href="#" target="_blank">Report</a></div>
+      </article>
+      <article class="card">
+        <h3>Privacy-Preserving Predictive Healthcare</h3>
+        <p>Explored anonymization and differential privacy trade-offs for healthcare models; ethics-first design.</p>
+        <div><span class="chip">Python</span><span class="chip">DP</span><span class="chip">scikit-learn</span></div>
+        <div class="actions"><a href="#" target="_blank">Notebook</a></div>
+      </article>
+      <article class="card">
+        <h3>Real-Time Cyber Threat Detection</h3>
+        <p>Apache Spark Streaming + RF/XGBoost/Isolation Forest on NSL-KDD; improved detection and AUC.</p>
+        <div><span class="chip">PySpark</span><span class="chip">XGBoost</span><span class="chip">SMOTE</span></div>
+        <div class="actions"><a href="#" target="_blank">Code</a></div>
+      </article>
+      <article class="card">
+        <h3>Job Market Insights Data Warehouse</h3>
+        <p>Star-schema in BigQuery; OLAP for salary/skills trends; Looker dashboards for insights.</p>
+        <div><span class="chip">BigQuery</span><span class="chip">SQL</span><span class="chip">Looker</span></div>
+        <div class="actions"><a href="#" target="_blank">Schema</a><a href="#" target="_blank">Dashboard</a></div>
+      </article>
+      <article class="card">
+        <h3>Iris ANN + GUI</h3>
+        <p>From-scratch ANN with Tkinter UI for quick experimentation and demos.</p>
+        <div><span class="chip">TensorFlow</span><span class="chip">Tkinter</span></div>
+        <div class="actions"><a href="#" target="_blank">Code</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="kicker">Education</div>
+    <h2 class="section-title">Degrees</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <h4>Kennesaw State University — M.S. Artificial Intelligence</h4>
+        <div class="meta">Jan 2025 – May 2026 (exp) · GPA 4.0/4.0</div>
+      </div>
+      <div class="tl-item">
+        <h4>Anna University (CEG) — B.E. Mechanical Engineering</h4>
+        <div class="meta">Jun 2012 – Apr 2016 · GPA 3.47/4.0</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Awards -->
+  <section id="certs">
+    <div class="kicker">Certifications & Awards</div>
+    <h2 class="section-title">Proof I keep sharpening</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Certifications</h3>
+        <p class="muted">CITI (AI & Human Subjects, Biomedical, Social/Behavioral), Google Cloud ML Tasks, Agile Tester, Java (ULSA), AWS Developer (former).</p>
+      </article>
+      <article class="card">
+        <h3>Awards</h3>
+        <p class="muted">Multiple Impact Awards (Carelon), H&PS Zenith “Young Champion” (Accenture), Automation specialist recognitions.</p>
+      </article>
+      <article class="card">
+        <h3>Leadership & Volunteering</h3>
+        <p class="muted">QQuest Secretary; UNESCO Kurukshetra organizer; Toastmasters; KSU service trip to Memphis; team-building initiatives.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="kicker">Contact</div>
+    <h2 class="section-title">Let’s connect</h2>
+    <div class="contact-card">
+      <div class="box">
+        <p class="muted">Email</p>
+        <p><a href="mailto:sukumarm1994@gmail.com">sukumarm1994@gmail.com</a> · <a href="mailto:smuthusa@students.kennesaw.edu">smuthusa@students.kennesaw.edu</a></p>
+        <div class="socials" style="margin-top:10px">
+          <a href="https://github.com/sukumarmuthusamy" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/sukumarmuthusamy" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="box">
+        <p class="muted">Currently open for</p>
+        <ul style="margin:0 0 0 18px;line-height:1.7">
+          <li>AI/ML internships & research collaborations</li>
+          <li>Data projects with explainability & privacy focus</li>
+          <li>Speaking about beginner-friendly AI ethics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Sukumar Muthusamy · Built with clean HTML/CSS
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth scroll + active menu highlighting
+    document.querySelectorAll('.menu a').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const href=a.getAttribute('href');
+        if(href.startsWith('#')){ e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth'}) }
+      });
+    });
+    const sections=[...document.querySelectorAll('section[id]')];
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          document.querySelectorAll('.menu a').forEach(a=>a.classList.remove('active'));
+          const link=document.querySelector(`.menu a[href="#${entry.target.id}"]`);
+          if(link) link.classList.add('active');
+        }
+      })
+    },{root:null,rootMargin:'-40% 0px -55% 0px'});
+    sections.forEach(s=>io.observe(s));
+  </script>
 </body>
 </html>
